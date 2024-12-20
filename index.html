@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christmas Advent Calendar</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Snow container for falling snow -->
+  <div class="snow"></div>
+
+  <!-- Advent Calendar -->
+  <div class="calendar">
+    <div class="title">
+        <span>M</span>
+        <span>e</span>
+        <span>r</span>
+        <span>r</span>
+        <span>y</span>
+        <span> </span>
+        <span>C</span>
+        <span>h</span>
+        <span>r</span>
+        <span>i</span>
+        <span>s</span>
+        <span>t</span>
+        <span>m</span>
+        <span>a</span>
+        <span>s</span>
+        <span>!</span>
+      </div>      
+    <div class="grid">
+      <!-- Generate 24 boxes -->
+      <div class="box" data-day="1"><span class="number">1</span></div>
+      <div class="box" data-day="2" id="box-2"><span class="number">2</span></div>
+      <div class="box" data-day="3" id="day-3"><span class="number">3</span></div>
+      <div class="box" data-day="4" id="day-4"><span class="number">4</span></div>
+        <div class="box" data-day="5" id="day-5"><span class="number">5</span></div>
+        <div class="box" data-day="6" id="day-6"><span class="number">6</span></div>
+        <div class="box" data-day="7" id="day-7"><span class="number">7</span></div>
+        <div class="box" data-day="8" id="day-8"><span class="number">8</span></div>
+        <div class="box" data-day="9" id="day-9"><span class="number">9</span></div>
+        <div class="box" data-day="10"><span class="number">10</span></div>
+        <div class="box" data-day="11" id="day-11"><span class="number">11</span></div>
+        <div class="box" data-day="12"><span class="number">12</span></div>
+    </div>
+  </div>
+
+  <!-- Pop-up container -->
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <span class="close-btn">X</span>
+      <img id="popup-image" src="" alt="Day Image">
+      <p id="popup-text"></p>
+    </div>
+  </div>
+
+  <!-- Popup for Day 2 -->
+  <div class="popup hidden" id="popup-2">
+    <div class="popup-content">
+      <canvas id="scratch-canvas" class="scratchable"></canvas>
+      <img src="images/day2.jpg" class="hidden-image" />
+      <span class="close-btn">X</span>
+    </div>
+  </div>
+
+  <!-- Popup for Day 3 -->
+  <div class="popup hidden" id="popup-day3">
+    <div class="popup-content">
+      <div class="popup-grid">
+        <!-- Left: Photo -->
+        <div class="popup-photo">
+          <img src="images/ploaia.jpeg" alt="Romantic Scene">
+        </div>
+        <!-- Right: Poem -->
+        <div class="popup-text-poem">
+          <p id="popup-poem">
+            Ploaia si umbrela am fost candva in viata ta <br>
+            Si asa voi fi mereu, caci tare greu e de a infrana <br>
+            Dorinta de a te vedea, de a te-asculta, de-a te-alina <br>
+            <br>
+            Sunt ploaia care cade bland, dar uneori raneste <br>
+            Si umbrela ce de ai ploii stropi te ocroteste <br>
+            Stropi de amor peste ale iubirii clipe, ce nu se vor uita <br>
+            Caci te iubesc cu tot ce sunt, cu fiecare puls ce mereu te va chema. <br>
+            <br>
+            Te iubesc asa cum esti, cu furtuni si cer senin,  <br>
+            Un haos frumos intr o lume de rutine gri <br>
+            Un paradox intre liniste si furtuna tacuta <br>
+            Tu, ploaia si umbrela, vei fi in viata mea, in fiecare clipa. <br>
+            <br>
+            Ramai asa, dragostea mea, chiar si-n furtuni amare <br>
+            Caci dragostea noastra i o ploaie ce naste flori rare <br>
+            Si chiar de vantul vremii ne va incerca,  <br>
+            Eu ploaia si umbrela voi fi in viata ta. <br>
+          </p>
+        </div>
+      </div>
+      <button class="close-btn" id="close-popup3">X</button>
+    </div>
+  </div>
+  
+
+<!-- Popup for Day 4 (Play Button with Christmas Theme) -->
+<div id="popup-day4" class="popup hidden">
+  <div class="popup-content christmas-popup">
+    <div class="video-container">
+      <!-- Play Button with Christmas theme -->
+      <a href="https://www.youtube.com/watch?v=Y3tfbmdbhTw&t=141s" target="_blank" class="play-btn">
+        <span class="play-icon">&#9654;</span> <!-- Play icon -->
+        <span>Canta cu mineee🎄</span>
+      </a>
+    </div>
+    <button class="close-btn">X</button>
+  </div>
+</div>
+
+
+  <!-- Popup for Day 5 -->
+  <div class="popup hidden" id="popup-day5">
+    <div class="popup-content">
+      <video id="popup-video5" controls>
+        <source src="images/day-5.mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p class="popup-text">De la spart gheata la spart nervii...love u</p>
+      <button class="close-btn">X</button>
+    </div>
+  </div>
+
+  <!-- Popup for Day 6 -->
+  <div id="popup-day6" class="popup hidden">
+    <div class="popup-content">
+      <button class="close-btn" onclick="closePopup()">×</button>
+      <h2 style="color: #d35400;">A LITTLE TREAT ON THE HALF OF THE WAY! 🎊</h2>
+      <p style="font-size: 1.2rem; line-height: 1.5; color: #34495e;">
+        cadouas micut dragut asteapta sa fie deschis! 🎁
+      </p>
+      <img src="images/treat.jpeg" alt="Surprise Gift" style="width: 50%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
+    </div>
+  </div>
+
+<!-- Popup for Day 7 -->
+<div id="popup-day7" class="popup hidden">
+  <div class="popup-content">
+    <button class="close-btn" onclick="closePopup()">X</button>
+    <h2 class="popup-title">Date Ideas Roulette</h2>
+    <div id="roulette-container">
+      <div id="wheel">
+        <div id="wheel-inner">
+  
+        </div>
+      </div>
+      <button id="spin-button">Spin</button>
+    </div>
+  </div>
+</div>
+
+<!-- Popup for Day 8 -->
+<div id="popup-day8" class="popup hidden">
+  <div class="popup-content">
+    <button class="close-btn" id="close-popup8" onclick="closePopup()">×</button>
+    <h2 class="popup-title">Pull the Christmas Cracker!</h2>
+    <div id="cracker" class="cracker">
+      <div class="cracker-message">
+        <div class="cracker-message__inner">
+          <p class="cracker-message__text">
+            Te iubesc, dar jur ca nu te mai suport
+            </p>
+        </div>
+      </div>
+      <div class="cracker-left">
+        <div class="cracker-left-inner">
+          <div class="cracker-left__mask-top"></div>
+          <div class="cracker-left__mask-bottom"></div>
+          <div class="cracker-left__tail"></div>
+          <div class="cracker-left__end"></div>
+          <div class="cracker-left__body"></div>
+          <div class="cracker-left-zigzag">
+            <div class="cracker-left-zigzag__item"></div>
+            <div class="cracker-left-zigzag__item"></div>
+            <div class="cracker-left-zigzag__item"></div>
+            <div class="cracker-left-zigzag__item"></div>
+            <div class="cracker-left-zigzag__item"></div>
+          </div>
+        </div>
+      </div>
+      <div class="cracker-right">
+        <div class="cracker-right-inner">
+          <div class="cracker-right__mask-top"></div>
+          <div class="cracker-right__mask-bottom"></div>
+          <div class="cracker-right__tail"></div>
+          <div class="cracker-right__end"></div>
+          <div class="cracker-right__body"></div>
+          <div class="cracker-right-zigzag">
+            <div class="cracker-right-zigzag__item"></div>
+            <div class="cracker-right-zigzag__item"></div>
+            <div class="cracker-right-zigzag__item"></div>
+            <div class="cracker-right-zigzag__item"></div>
+            <div class="cracker-right-zigzag__item"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Popup for Day 9 (Christmas Movie Bucket List) -->
+<div id="popup-day9" class="popup hidden">
+  <div class="popup-content christmas-popup-bucket-list">
+    <!-- <h2 class="popup-title">🎬 Christmas Movie Bucket List 🎄</h2> -->
+    <!-- <p class="bucketlist-description">Tick the movies you've watched:</p> -->
+      <div class="movie-item" style="top: 168px; left: -224px; size: 40px;">
+        <input type="checkbox" id="movie1" name="movie1">
+      </div>
+      <div class="movie-item" style="top: 183px; left: -223px; size: 40px;">
+        <input type="checkbox" id="movie2" name="movie2">
+      </div>
+      <div class="movie-item" style="top: 199px; left: -223px; size: 40px;">
+        <input type="checkbox" id="movie3" name="movie3">
+      </div>
+      <div class="movie-item" style="top: 216px; left: -223px; size: 40px;">
+        <input type="checkbox" id="movie4" name="movie4">
+      </div>
+      <div class="movie-item" style="top: 232px; left: -223px; size: 40px;">
+        <input type="checkbox" id="movie5" name="movie5">
+      </div>
+      <div class="movie-item" style="top: 274px; left: -223px; size: 40px;">
+        <input type="checkbox" id="movie6" name="movie6">
+      </div>
+      <div class="movie-item" style="top: 315px; left: -223px; size: 40px;">
+        <input type="checkbox" id="movie7" name="movie7">
+      </div>
+      <div class="movie-item" style="top: 358px; left: -223px; size: 40px;">
+        <input type="checkbox" id="movie8" name="movie8">
+      </div>
+      <div class="movie-item" style="top: 400px; left: -223px; size: 40px;">
+        <input type="checkbox" id="movie9" name="movie9">
+      </div>
+      <div class="movie-item" style="top: 442px; left: -223px; size: 40px;">
+        <input type="checkbox" id="movie10" name="movie10">
+      </div>
+      <div class="movie-item" style="top: 484px; left: -223px; size: 40px;">
+        <input type="checkbox" id="movie11" name="movie11">
+      </div>
+      <div class="movie-item" style="top: 523px; left: -223px; size: 40px;">
+        <input type="checkbox" id="movie12" name="movie12">
+      </div>
+      <div class="movie-item" style="top: 542px; left: -223px; size: 40px;">
+        <input type="checkbox" id="movie13" name="movie13">
+      </div>
+      <div class="movie-item" style="top: 559px; left: -223px; size: 40px;">
+        <input type="checkbox" id="movie14" name="movie14">
+      </div>
+
+      <div class="movie-item" style="top: -112px; left: 12px; size: 40px;">
+        <input type="checkbox" id="movie15" name="movie15">
+      </div>
+      <div class="movie-item" style="top: -95px; left: 12px; size: 40px;">
+        <input type="checkbox" id="movie16" name="movie16">
+      </div>
+      <div class="movie-item" style="top: -78px; left: 12px; size: 40px;">
+        <input type="checkbox" id="movie17" name="movie17">
+      </div>
+      <div class="movie-item" style="top: -61px; left: 12px; size: 40px;">
+        <input type="checkbox" id="movie18" name="movie18">
+      </div>
+      <div class="movie-item" style="top: -20px; left: 12px; size: 40px;">
+        <input type="checkbox" id="movie19" name="movie19">
+      </div>
+      <div class="movie-item" style="top: 20px; left: 12px; size: 40px;">
+        <input type="checkbox" id="movie20" name="movie20">
+      </div>
+      <div class="movie-item" style="top: 38px; left: 12px; size: 40px;">
+        <input type="checkbox" id="movie21" name="movie21">
+      </div>
+      <div class="movie-item" style="top: 79px; left: 12px; size: 40px;">
+        <input type="checkbox" id="movie22" name="movie22">
+      </div>
+      <div class="movie-item" style="top: 97px; left: 12px; size: 40px;">
+        <input type="checkbox" id="movie23" name="movie23">
+      </div>
+      <div class="movie-item" style="top: 135px; left: 12px; size: 40px;">
+        <input type="checkbox" id="movie24" name="movie24">
+      </div>
+      <div class="movie-item" style="top: 177px; left: 12px; size: 40px;">
+        <input type="checkbox" id="movie25" name="movie25">
+      </div>
+      <div class="movie-item" style="top: 219px; left: 12px; size: 40px;">
+        <input type="checkbox" id="movie26" name="movie26">
+      </div> 
+      <div class="movie-item" style="top: 238px; left: 12px; size: 40px;">
+        <input type="checkbox" id="movie27" name="movie27">
+      </div>
+      <div class="movie-item" style="top: 255px; left: 12px; size: 40px;">
+        <input type="checkbox" id="movie28" name="movie28">
+      </div>
+
+      <!-- Add more movies as needed -->
+      <button type="button" class="close-btn" onclick="closePopup()">X</button>
+  </div>
+</div>
+
+<!-- Popup for Day 11 -->
+<div class="popup hidden" id="popup-day11">
+  <div class="popup-content">
+    <video id="popup-video11" controls>
+      <source src="images/noi.mp4">
+      Your browser does not support the video tag.
+    </video>
+    <p class="popup-text">Iubirea incepe cu un la multi ani... <br> 
+      si imi doresc sa continue cu o gramada de rasete, 
+      certuri prosesti si impacari rapide. Te iubesc! 🫶🏻 <br>
+    </p>
+    <button class="close-btn">X</button>
+  </div>
+</div>
+
+<!-- Popup day 12 the same as day 3 -->
+<div class="popup hidden" id="popup-day12">
+  <div class="popup-content">
+    <div class="popup-grid">
+      <!-- Right: Poem -->
+      <div class="popup-text-poem" style="width: 100%;">
+        <p style = "font-size: 1.2rem; line-height: 1.5; color: #34495e;">
+         Draga consulantul meu, <br>
+         Multumesc ca pe langa o asigurare de viata, mi-ai asigurat
+         totodata un zambet de fiecare data cand ma gandesc la tine, <br>
+         o incruntare de fiecare data cand ma enervezi, <br>
+         o chicot de fiecare data cand ma faci sa rad, <br>
+         curiozitate, nerabdare si EMOTIE! <br>
+
+        DACA IUBIREA MEA PENTRU TINE AR FI O ASIGURARE, <br>
+        ABIA ATUNCI VEI PUTEA FI BENEFICIARUL! <3 LOVE U FOREVER. ❤️  <br>
+        </p>
+      </div>
+    </div>
+    <button class="close-btn" id="close-popup12">X</button>
+ 
+
+  <script src="script.js" defer></script>
+</body>
+</html>

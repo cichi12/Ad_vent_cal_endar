@@ -1,0 +1,762 @@
+/* General styles */
+body {
+  /* background: linear-gradient(to bottom, #003366 0%, #006699 40%, #009999 100%); Smooth gradient transition */
+  background-color: #15164e;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  overflow: hidden;
+  color: white;
+  text-align: center;
+}
+
+/* Snow container */
+.snow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Calendar */
+.calendar {
+  max-width: 90%;
+  margin: 39px auto; /* Move the calendar down by 100px */
+  text-align: center;
+  color: white;
+}
+
+/* Grid of boxes */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Each box */
+.box {
+  position: relative;
+  background: rgba(255, 255, 255, 0.9); /* Light snow-like background */
+  height: 230px;
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* put hover image for day 1 */
+.box:nth-child(1):hover {
+  background-image: url("images/day1.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* put hover image for day 2 */
+.box:nth-child(2):hover {
+  background-image: url("images/day2.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* put hover image for day 3 */
+.box:nth-child(3):hover {
+  background-image: url("images/day3.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* put hover image for day 4 */
+.box:nth-child(4):hover {
+  background-image: url("images/day4.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* put hover image for day 5 */
+.box:nth-child(5):hover {
+  background-image: url("images/day5.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* put hover image for day 6 */
+.box:nth-child(6):hover {
+  background-image: url("images/day6.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* put hover image for day 7 */
+.box:nth-child(7):hover {
+  background-image: url("images/day7.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* put hover image for day 8 */
+.box:nth-child(8):hover {
+  background-image: url("images/day8.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* put hover image for day 9 */
+.box:nth-child(9):hover {
+  background-image: url("images/day9.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* put hover image for day 10 */
+.box:nth-child(10):hover {
+  background-image: url("images/day10.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* put hover image for day 11 */
+.box:nth-child(11):hover {
+  background-image: url("images/day11.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* put hover image for day 12 */
+.box:nth-child(12):hover {
+  background-image: url("images/day12.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* put hover image for day 13 */
+.box:nth-child(13):hover {
+  background-image: url("images/day13.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* put hover image for day 14 */
+.box:nth-child(14):hover {
+  background-image: url("images/day14.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* put hover image for day 15 */
+.box:nth-child(15):hover {
+  background-image: url("images/day15.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* put hover image for day 16 */
+.box:nth-child(16):hover {
+  background-image: url("images/day16.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.box::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-size: cover;
+  pointer-events: none;
+}
+
+/* Hover effect for the box */
+.box:hover {
+  transform: scale(0.9);
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Number text style */
+.box .number {
+  font-family: 'Mountains of Christmas', cursive;
+  font-size: 9rem;
+  font-weight: bold;
+  color: #b22222;
+  transition: font-size 0.3s, color 0.3s, transform 0.3s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the text */
+}
+
+/* Smaller and more centered on hover */
+.box:hover .number {
+  font-size: 2rem;
+  color: #8b0000;
+  transform: translate(-50%, -50%) scale(1); /* Center and scale down */
+}
+/* Popup */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+.popup-content {
+  position: relative;
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  max-width: 800px;
+  width: 90%;
+  color: black;
+}
+
+.popup-content img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.close-btn:hover {
+  background: darkred;
+}
+
+/* Snowflake animation */
+.snowflake {
+  position: absolute;
+  top: -10px; /* Start above the screen */
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100%); /* Start snowflake off-screen at the top */
+  }
+  100% {
+    transform: translateY(100vh); /* Snowflake falls to the bottom of the screen */
+  }
+}
+
+/* Snowflake random speed */
+.snowflake {
+  animation-duration: 8s; /* Default fall speed */
+}
+
+.snowflake:nth-child(odd) {
+  animation-duration: 6s; /* Randomize the fall speed */
+}
+
+.snowflake:nth-child(even) {
+  animation-duration: 10s;
+}
+
+/* Candy Cane Title */
+.title {
+  font-family: 'Arial', sans-serif;
+  font-size: 3.5rem; /* Adjust font size as needed */
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+/* Candy Cane effect for each letter */
+.title span {
+  background: linear-gradient(45deg, green 50%, red 33%, red 33%, white 66%); /* Diagonal stripes */
+  background-size: 200% 200%; /* Expand the stripes */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.scratchable {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Overlay canvas over the image */
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.hidden-image {
+  width: 100%;
+  border-radius: 10px;
+  z-index: 0; /* Ensure the image stays behind the canvas */
+}
+
+/* Popup styles (already included, but ensure the video fits) */
+.popup-content video {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.popup-text {
+  font-size: 1.2rem;
+  color: black;
+  margin-top: 10px;
+}
+
+/* Style for the poem text */
+#popup-poem {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: black;
+  font-family: 'Georgia', serif;
+  text-align: center;
+}
+
+.popup-text-poem {
+  width: 40%; /* 60% for the text */
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9; /* Light gray background */
+}
+
+.popup-photo {
+  width: 80%; /* 40% for the photo */
+  overflow: hidden;
+  background: #eee; /* Placeholder background */
+}
+
+
+.popup-photo img {
+  /* put the image lower */
+  margin-top: 200px;
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+}
+
+.popup-grid {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+
+
+/* Artistic hover for Day 6 */
+#day6:hover {
+  background-image: url('images/day6-art.jpg'); /* Artistic image */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  border: 2px solid #d35400; /* Bright orange border */
+}
+
+/* Artistic popup heading */
+.popup-content h2 {
+  font-family: 'Cursive', 'Arial', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Image styles in popup */
+.popup-content img {
+  border: 4px solid #d35400; /* Orange border to match theme */
+  animation: glow 2s infinite ease-in-out;
+}
+
+/* Glow animation */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px #d35400;
+  }
+  50% {
+    box-shadow: 0 0 15px #d35400;
+  }
+}
+
+
+/* day 7 */
+#roulette-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#wheel {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 5px solid #2e2e2e; /* Dark gray for a realistic border */
+  overflow: hidden;
+  position: relative;
+}
+
+#wheel-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(
+    #007b00 0% 12.5%, /* Green */
+    #ffffff 12.5% 25%, /* White */
+    #d91e18 25% 37.5%, /* Red */
+    #ffffff 37.5% 50%, /* White */
+    #007b00 50% 62.5%, /* Green */
+    #ffffff 62.5% 75%, /* White */
+    #d91e18 75% 87.5%, /* Red */
+    #ffffff 87.5% 100% /* White */
+  );
+  transform-origin: center;
+  transition: transform 4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.prize {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem; /* Adjust font size for better fit */
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+  transform-origin: center bottom;
+}
+
+
+#spin-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007b00; /* Green to match the wheel */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#spin-button:hover {
+  background-color: #005a00; /* Darker green on hover */
+}
+
+/* Day 8 */
+@import url("https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two");
+
+.cracker {
+  width: 650px;
+  height: 100px;
+  margin: 100px auto 0;
+  position: relative;
+  cursor: pointer;
+}
+
+.cracker:hover .cracker-left {
+  left: -120px;
+  top: 50px;
+  transform: rotate(-15deg);
+}
+
+.cracker:hover .cracker-right {
+  right: -120px;
+  top: 50px;
+  transform: rotate(15deg);
+}
+
+.cracker-left,
+.cracker-right {
+  transition: all 0.5s ease-in-out;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background-color: #da1d1b;
+}
+
+.cracker-left {
+  left: 0;
+}
+
+.cracker-right {
+  right: 0;
+}
+
+.cracker-left-inner,
+.cracker-right-inner {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.cracker-left-inner:before,
+.cracker-right-inner:before {
+  content: "";
+  height: 100%;
+  width: 10px;
+  background-color: #b31513;
+  position: absolute;
+  z-index: 10;
+  border-radius: 50%;
+}
+
+.cracker-left-inner:before {
+  left: 0px;
+  top: 0;
+}
+
+.cracker-right-inner:before {
+  right: 0px;
+  top: 0;
+}
+
+.cracker-message {
+  padding: 0px 0;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.cracker-message__inner {
+  padding: 0px;
+  background: #e2e2e2;
+  color: #999999;
+  text-align: center;
+  font-size: 17px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  border: 1px solid #e7e7e7;
+  box-shadow: 2px 2px 30px #d2d2d2;
+}
+
+.cracker-left__tail,
+.cracker-left__end,
+.cracker-left__body,
+.cracker-right__tail,
+.cracker-right__end,
+.cracker-right__body,
+.cracker-left__mask-top,
+.cracker-left__mask-bottom,
+.cracker-right__mask-top,
+.cracker-right__mask-bottom {
+  position: absolute;
+}
+
+.cracker-left__tail,
+.cracker-right__tail {
+  width: 100px;
+  height: 100%;
+  background-color: #ef4a4a;
+}
+
+.cracker-left__tail {
+  left: 0;
+}
+
+.cracker-right__tail {
+  right: 0;
+}
+
+.cracker-left__end,
+.cracker-right__end {
+  width: 20px;
+  height: 100%;
+  background-color: #b31513;
+}
+
+.cracker-left__end:before,
+.cracker-right__end:before {
+  content: "";
+  height: 55px;
+  width: 15px;
+  background-color: #ffb20f;
+  position: absolute;
+  top: 21px;
+  z-index: 15;
+  border: 1px solid #e6990c;
+  border-radius: 5px;
+}
+
+.cracker-left__end {
+  left: 100px;
+}
+
+.cracker-left__end:before {
+  left: -0px;
+}
+
+.cracker-right__end {
+  right: 110px;
+}
+
+.cracker-right__end:before {
+  right: -10px;
+}
+
+.cracker-left__mask-top,
+.cracker-left__mask-bottom,
+.cracker-right__mask-top,
+.cracker-right__mask-bottom {
+  width: 10px;
+  height: 25px;
+  z-index: 10;
+}
+
+.cracker-left__mask-top {
+  left: 30px;
+  top: -35px;
+  clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}
+
+.cracker-left__mask-bottom {
+  left: 30px;
+  bottom: -35px;
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+}
+
+.cracker-right__mask-top {
+  right: 30px;
+  top: -35px;
+  clip-path: polygon(0 100%, 50% 0, 100% 100%);
+  transform: rotate(180deg);
+}
+
+.cracker-right__mask-bottom {
+  right: 30px;
+  bottom: -35px;
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  transform: rotate(180deg);
+}
+
+.cracker-left-zigzag,
+.cracker-right-zigzag {
+  position: absolute;
+  height: 100%;
+}
+
+.cracker-left-zigzag {
+  right: -1px;
+  top: 0;
+}
+
+.cracker-right-zigzag {
+  left: -10px;
+  top: 0;
+}
+
+.cracker-left-zigzag__item,
+.cracker-right-zigzag__item {
+  width: 0px;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 20px solid white;
+}
+
+.hover-me-text {
+  text-align: center;
+  margin-top: 20px;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+}
+
+.popup-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+/* Day 4 */
+
+/* Christmas Popup Design */
+.christmas-popup {
+  background: url('images/day4-cover.jpg') no-repeat center center;
+  background-size: cover; /* Make the background cover the entire popup */
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  width: 80%;
+  max-width: 800px;
+  height: 800px;
+}
+
+.christmas-popup .video-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10; /* Ensure the button is on top of the background */
+}
+
+.play-btn {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6); /* Slightly transparent background for contrast */
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.play-btn:hover {
+  background: rgba(0, 128, 0, 0.8); /* Dark green for hover effect */
+}
+
+.play-icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+
+/* day 9 */
+
+.christmas-popup-bucket-list {
+  background: url('images/day9-bucket.jpg') no-repeat center center;
+  background-size: cover; /* Make the background cover the entire popup */
+  border-radius: 15px;
+  padding: 50px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  width: 25%;
+  height: 100%;
+  max-width: 800px;
+  height: 800px;
+}
+
+.movie-item {
+  position: relative; /* This allows absolute positioning of the checkbox inside it */
+}
+
+input[type="checkbox"] {
+  transform: scale(2.5); /* 1.5x size */
+}
